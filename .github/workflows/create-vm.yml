@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
 env:
   COMPARTMENT_ID: ${{ secrets.OCI_COMPARTMENT_ID }}
-  IMAGE_ID: ${{ secrets.IMAGE_ID }}
+  IMAGE_ID: "ocid1.image.oc1.us-sanjose-1.aaaaaaaa3vtg3aciw2kohec576hhrwrbsl5jgvy6npdomy6kcq64m64hseaa"
   SUBNET_ID: ${{ secrets.OCI_SUBNET_ID }}
-  AD_NAME: ${{ secrets.AD_NAME }}
+  AD_NAME: "QSHB:US-SANJOSE-1-AD-1"
   OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
   OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
   OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
@@ -36,6 +36,7 @@ jobs:
 
           mkdir -p ~/.oci
           echo "${{ secrets.OCI_CLI_KEY_CONTENT }}" > ~/.oci/oci_api_key.pem
+          echo "OCI_API_KEY" >> ~/.oci/oci_api_key.pem
           chmod 600 ~/.oci/oci_api_key.pem
 
           echo "[DEFAULT]" > ~/.oci/config
